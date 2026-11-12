@@ -1,7 +1,7 @@
 /*
  * The pill. Every size and colour is a custom property, set on `.level-slider`
- * (or on any element around it) to fit a design system. The colours default to
- * shades of the text colour, so the slider reads on a light page and a dark one.
+ * to fit a design system. The colours default to shades of the text colour, so
+ * the slider reads on a light page and a dark one.
  * The keyboard focus ring is the page's own (`:focus-visible`), never redrawn.
  */
 .level-slider {

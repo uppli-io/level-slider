@@ -1,6 +1,6 @@
 {
   "name": "@uppli-io/level-slider",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A few named levels on one small pill, a dot per level: an accessible React slider with no dependency.",
   "keywords": [
     "react",

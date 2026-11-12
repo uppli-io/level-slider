@@ -5,7 +5,7 @@ A few named levels on one small pill: a dot per level, a round handle on the lev
 ## Install
 
 ```sh
-npm install https://github.com/uppli-io/level-slider/releases/download/v0.1.0/uppli-io-level-slider-0.1.0.tgz
+npm install https://github.com/uppli-io/level-slider/releases/download/v0.1.1/uppli-io-level-slider-0.1.1.tgz
 ```
 
 ## Use
@@ -60,7 +60,7 @@ In a right-to-left page, Arrow Left and Arrow Right swap, and the lowest level s
 
 ## Styling
 
-Each size and colour is a custom property. Set it on `.level-slider`, or on any element around the pill:
+Each size and colour is a custom property. Set it on `.level-slider`, after the import of `style.css`:
 
 | Property                      | Default                                             |
 | ----------------------------- | --------------------------------------------------- |
