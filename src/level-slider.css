@@ -1,0 +1,90 @@
+/*
+ * The pill. Every size and colour is a custom property, set on `.level-slider`
+ * (or on any element around it) to fit a design system. The colours default to
+ * shades of the text colour, so the slider reads on a light page and a dark one.
+ * The keyboard focus ring is the page's own (`:focus-visible`), never redrawn.
+ */
+.level-slider {
+  --level-slider-width: 76px;
+  --level-slider-height: 18px;
+  --level-slider-thumb-size: 14px;
+  --level-slider-notch-size: 4px;
+  --level-slider-touch-height: 44px;
+  --level-slider-track: color-mix(in srgb, currentColor 14%, transparent);
+  --level-slider-fill: color-mix(in srgb, currentColor 12%, transparent);
+  --level-slider-notch: color-mix(in srgb, currentColor 40%, transparent);
+  --level-slider-thumb: currentColor;
+  /* Derived: the handle's gap to the edge, and how far its start moves end to end. */
+  --level-slider-inset: calc((var(--level-slider-height) - var(--level-slider-thumb-size)) / 2);
+  --level-slider-travel: calc(var(--level-slider-width) - var(--level-slider-height));
+
+  position: relative;
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+  width: var(--level-slider-width);
+  height: var(--level-slider-height);
+  border-radius: calc(var(--level-slider-height) / 2);
+  background: var(--level-slider-track);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+
+/* A finger-sized target, the pill's own size unchanged. */
+.level-slider::after {
+  content: '';
+  position: absolute;
+  inset: calc((var(--level-slider-height) - var(--level-slider-touch-height)) / 2) 0;
+}
+
+.level-slider[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* From the start of the pill to just past the handle. */
+.level-slider-fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: calc(var(--level-slider-height) + var(--level-slider-at) * var(--level-slider-travel));
+  border-radius: inherit;
+  background: var(--level-slider-fill);
+}
+
+/* One per level, where the handle's centre stops for it. */
+.level-slider-notch {
+  position: absolute;
+  top: calc((var(--level-slider-height) - var(--level-slider-notch-size)) / 2);
+  inset-inline-start: calc(
+    (var(--level-slider-height) - var(--level-slider-notch-size)) / 2 +
+      var(--level-slider-notch-at) * var(--level-slider-travel)
+  );
+  width: var(--level-slider-notch-size);
+  height: var(--level-slider-notch-size);
+  border-radius: 50%;
+  background: var(--level-slider-notch);
+}
+
+.level-slider-thumb {
+  position: absolute;
+  top: var(--level-slider-inset);
+  inset-inline-start: calc(
+    var(--level-slider-inset) + var(--level-slider-at) * var(--level-slider-travel)
+  );
+  width: var(--level-slider-thumb-size);
+  height: var(--level-slider-thumb-size);
+  border-radius: 50%;
+  background: var(--level-slider-thumb);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .level-slider-fill {
+    transition: width 0.15s;
+  }
+  .level-slider-thumb {
+    transition: inset-inline-start 0.15s;
+  }
+}
